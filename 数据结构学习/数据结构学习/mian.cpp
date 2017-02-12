@@ -59,6 +59,5 @@ int main()
 {
 	//test_doubly_linked_list();
 	test_chain();
-	test_arraylist();
 	return 0;
 }
