@@ -57,7 +57,7 @@ void test_doubly_linked_list()
 
 int main()
 {
-	//test_doubly_linked_list();
+	test_doubly_linked_list();
 	test_chain();
 	return 0;
 }
