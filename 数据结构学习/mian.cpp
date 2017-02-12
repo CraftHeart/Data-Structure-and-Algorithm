@@ -60,5 +60,6 @@ int main()
 	test_doubly_linked_list();
 	test_chain();
 	test_arraylist();
+	test_SinglyLinkedCircularList();
 	return 0;
 }
