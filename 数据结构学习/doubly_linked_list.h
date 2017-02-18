@@ -38,6 +38,8 @@ public:
 	bool is_empty() const { return list_size_ == 0; }
 	int size() const { return list_size_; }
 	T& operator[](const int the_index) const;
+	void push_back(const T& the_element);
+	void push_begin(const T& the_element);
 	void insert(int the_index, const T& the_element);
 	void erase(int the_index);
 
@@ -56,13 +58,14 @@ DoublyLinkedList<T>::DoublyLinkedList() :first_node_{ nullptr },
 template<class T>
 DoublyLinkedList<T>::~DoublyLinkedList()
 {
-	Node<T>* current_node = first_node_->next_node_;
-	for (int i = 0; i < list_size_; i++)
+	Node<T>* current_node = first_node_;
+	for (int i = 0; i < list_size_-1; i++)
 	{
+		current_node = current_node->next_node_;
 		delete[] first_node_;
 		first_node_ = current_node;
-		current_node = current_node->next_node_;
 	}
+	delete[] last_node_;
 }
 
 template<class T>
@@ -94,74 +97,71 @@ T& DoublyLinkedList<T>::operator[](const int the_index) const
 }
 
 template<class T>
+void DoublyLinkedList<T>::push_back(const T& the_element)
+{
+	if (list_size_ > 0)
+	{
+		Node<T>* old_last_node = last_node_;
+		last_node_ = new Node<T>(the_element, last_node_, nullptr);
+		old_last_node->next_node_ = last_node_;
+		list_size_++;
+	}
+	else
+	{
+		first_node_ = new Node<T>(the_element, nullptr, nullptr);
+		last_node_ = first_node_;
+		list_size_++;
+	}
+}
+
+template<class T>
+void DoublyLinkedList<T>::push_begin(const T& the_element)
+{
+	if (list_size_ > 0)
+	{
+		Node<T>* old_first_node = first_node_;
+		first_node_ = new Node<T>(the_element, nullptr, first_node_);
+		old_first_node->pre_node_ = first_node_;
+		list_size_++;
+	}
+	else
+	{
+		first_node_ = new Node<T>(the_element, nullptr, nullptr);
+		last_node_ = first_node_;
+		list_size_++;
+	}
+}
+
+
+
+template<class T>
 void DoublyLinkedList<T>::insert(int the_index, const T& the_element)
 {
 	//check the index
 	if (the_index<0 || the_index>list_size_)
 		throw illegalIndex();
-
-	//search from the first node if < list_size/2
-	if (the_index <= list_size_ / 2)
+	if (list_size_ == 0)
 	{
-		//if the index is the first node
+		first_node_ = new Node<T>(the_element, nullptr, nullptr);
+		last_node_ = first_node_;
+		list_size_++;
+	}
+	else
+	{
 		if (the_index == 0)
-		{
-			if (list_size_ <=1)
-			{
-				first_node_ = new Node<T>(the_element, nullptr, nullptr);
-				last_node_ = first_node_;
-				list_size_++;
-			}
-			else
-			{
-				Node<T>* old_index_node = first_node_;
-				first_node_ = new Node<T>(the_element, nullptr, first_node_->next_node_);
-				old_index_node->pre_node_ = first_node_;
-				list_size_++;
-			}
-		}
+			push_begin(the_element);
+		else if (the_index == list_size_)
+			push_back(the_element);
 		else
 		{
 			Node<T>* current_node = first_node_;
-			Node<T>* old_index_node;
-			for (int i = 0; i < the_index - 1; i++)
+			for (int i = 0; i < the_index; i++)
 				current_node = current_node->next_node_;
-			old_index_node = current_node->next_node_;
-			current_node->next_node_ = new Node<T>(the_element, current_node, current_node->next_node_);
-			old_index_node->pre_node_ = current_node->next_node_;
+			Node<T>* old_current_node = current_node;
+			current_node = new Node<T>(the_element, current_node->pre_node_, current_node);
+			old_current_node->next_node_->pre_node_ = current_node;
+			old_current_node->pre_node_->next_node_ = current_node;
 			list_size_++;
-		}
-		
-	}
-	else  //searching from the last node to the index
-	{
-		//if the index is the last node
-		if(the_index==list_size_-1)
-		{
-			Node<T>* old_index_node = last_node_;
-			last_node_ = new Node<T>(the_element,last_node_->pre_node_,nullptr);
-			old_index_node->next_node_ = last_node_;
-			list_size_++;
-		}
-		else
-		{
-			if (list_size_ <= 1)
-			{
-				first_node_ = new Node<T>(the_element, nullptr, nullptr);
-				last_node_ = first_node_;
-				list_size_++;
-			}
-			else
-			{
-				Node<T>* current_node = last_node_;
-				Node<T>* old_index_node;
-				for (int i = list_size_ - 1; i>the_index; i--)
-					current_node = current_node->pre_node_;
-				old_index_node = current_node->pre_node_;
-				current_node->pre_node_ = new Node<T>(the_element, current_node->pre_node_, current_node);
-				old_index_node->next_node_ = current_node->pre_node_;
-				list_size_++;
-			}
 		}
 	}
 }

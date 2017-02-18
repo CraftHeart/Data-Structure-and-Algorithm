@@ -51,6 +51,8 @@ void test_doubly_linked_list()
 		my_list.insert(i, i);
 	}
 	cout << "my_list[3]=" << my_list[3] << endl;
+	my_list.insert(3, 10);
+	cout << "my_list[3]=" << my_list[3] << endl;
 	my_list.erase(3);
 	cout << "my_list[3]=" << my_list[3] << endl;
 }
