@@ -53,8 +53,16 @@ void test_doubly_linked_list()
 	cout << "my_list[3]=" << my_list[3] << endl;
 	my_list.insert(3, 10);
 	cout << "my_list[3]=" << my_list[3] << endl;
-	my_list.erase(3);
-	cout << "my_list[3]=" << my_list[3] << endl;
+	/*my_list.erase(3);
+	cout << "my_list[3]=" << my_list[3] << endl;*/
+
+	DoublyLinkedList<int> my_list2(my_list);
+	cout << "after copy constructor my_list2[3]=" << my_list2[3] << endl;
+	my_list2.erase(3);
+	cout << "after erase my_list2[3]=" << my_list2[3] << endl;
+
+	my_list = my_list2;
+	cout << "after copy assignmenet my_list[3]=" << my_list[3] << endl;
 }
 
 int main()

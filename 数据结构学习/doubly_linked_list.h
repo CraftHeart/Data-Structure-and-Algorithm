@@ -33,6 +33,11 @@ public:
 	//constructor and destructor
 	DoublyLinkedList();
 	~DoublyLinkedList();
+	//copy constructor
+	DoublyLinkedList(DoublyLinkedList &);
+
+	//operator =
+	DoublyLinkedList& operator=(DoublyLinkedList&);
 
 	//ADT
 	bool is_empty() const { return list_size_ == 0; }
@@ -42,6 +47,8 @@ public:
 	void push_begin(const T& the_element);
 	void insert(int the_index, const T& the_element);
 	void erase(int the_index);
+
+
 
 private:
 	void check_index(int the_index) const;
@@ -55,9 +62,62 @@ DoublyLinkedList<T>::DoublyLinkedList() :first_node_{ nullptr },
 																				last_node_{ nullptr },
 																				list_size_{ 0 } {}
 
+//copy constructor
+template<class T>
+DoublyLinkedList<T>::DoublyLinkedList(DoublyLinkedList<T>& list) :list_size_{0}
+{
+	if (list.list_size_ == 0)
+	{
+		cerr << "copy constructor error: empty list" << endl;
+		exit(-1);
+	}
+	Node<T>* list_current_node = list.first_node_;
+	while (list_current_node)
+	{
+		push_back(list_current_node->element_);
+		list_current_node = list_current_node->next_node_;
+	}
+}
+
+//copy assignment operator
+template<class T>
+DoublyLinkedList<T>& DoublyLinkedList<T>::operator=(DoublyLinkedList<T>& list)
+{
+	if (this != &list)  // check if it is the same list : important
+	{
+		//free the old list: important
+		Node<T>* current_node = first_node_;
+		for (int i = 0; i < list_size_ - 1; i++)
+		{
+			current_node = current_node->next_node_;
+			delete[] first_node_;
+			first_node_ = current_node;
+		}
+		delete[] last_node_;
+		first_node_ = nullptr;
+		last_node_ = nullptr;
+		list_size_ = 0;
+
+		if (list.list_size_ == 0)
+		{
+			cerr << "copy constructor error: empty list" << endl;
+			exit(-1);
+		}
+		Node<T>* list_current_node = list.first_node_;
+		while (list_current_node)
+		{
+			push_back(list_current_node->element_);
+			list_current_node = list_current_node->next_node_;
+		}
+	}
+	return *this;
+}
+
 template<class T>
 DoublyLinkedList<T>::~DoublyLinkedList()
 {
+	if (first_node_ == nullptr)
+		return;
 	Node<T>* current_node = first_node_;
 	for (int i = 0; i < list_size_-1; i++)
 	{
@@ -66,6 +126,8 @@ DoublyLinkedList<T>::~DoublyLinkedList()
 		first_node_ = current_node;
 	}
 	delete[] last_node_;
+	first_node_ = nullptr;
+	last_node_ = nullptr;
 }
 
 template<class T>
@@ -98,7 +160,7 @@ T& DoublyLinkedList<T>::operator[](const int the_index) const
 
 template<class T>
 void DoublyLinkedList<T>::push_back(const T& the_element)
-{
+{//add one element at the end of the list
 	if (list_size_ > 0)
 	{
 		Node<T>* old_last_node = last_node_;
@@ -107,7 +169,7 @@ void DoublyLinkedList<T>::push_back(const T& the_element)
 		list_size_++;
 	}
 	else
-	{
+	{//if list is empty
 		first_node_ = new Node<T>(the_element, nullptr, nullptr);
 		last_node_ = first_node_;
 		list_size_++;
