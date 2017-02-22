@@ -4,6 +4,7 @@
 #include<iostream>
 #include"SinglyLinkedCircularList.h"
 #include"doubly_linked_list.h"
+#include"circle_doubly_linked_list.h"
 
 using namespace std;
 
@@ -65,8 +66,27 @@ void test_doubly_linked_list()
 	cout << "after copy assignmenet my_list[3]=" << my_list[3] << endl;
 }
 
+void test_circle_doubly_linked_list()
+{
+	CircleDoublyLinkedList<int> list1;
+	for (int i = 0; i < 10; i++)
+		list1.insert(i, i);
+	cout << "list1[3]= " << list1[3] << endl;
+	list1.insert(3, 102);
+	cout << "list1[3]= " << list1[3] << endl;
+	cout << "list1[4]= " << list1[4] << endl;
+	list1.erase(4);
+	cout << "list1[4]= " << list1[4] << endl;
+	CircleDoublyLinkedList<int> list2(list1);
+	list1.insert(3, 11);
+	cout << "list1[3]= " << list1[3] << endl;
+	list2 = list1;
+	cout << "list2[3]= " << list2[3] << endl;
+}
+
 int main()
 {
-	test_doubly_linked_list();
+	//test_doubly_linked_list();
+	test_circle_doubly_linked_list();
 	return 0;
 }
