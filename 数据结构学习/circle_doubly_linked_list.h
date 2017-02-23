@@ -28,6 +28,7 @@ public:
 	CircleDoublyLinkedList(CircleDoublyLinkedList<T>&);
 	~CircleDoublyLinkedList();
 
+	//ADT
 	bool is_empty()const { return list_size_ == 0; }
 	T& operator[](const int the_index) const;
 	CircleDoublyLinkedList<T>& operator=(CircleDoublyLinkedList<T> &);
@@ -101,7 +102,7 @@ CircleDoublyLinkedList<T>& CircleDoublyLinkedList<T>::operator=(CircleDoublyLink
 	list_size_ = 0;
 
 	//copy assignment
-	CircleNode<T>* the_list_node = the_list.head_node_->next_node_;
+	CircleNode<T>* the_list_node = the_list.head_node_;
 	do 
 	{
 		push_back(the_list_node->element_);
