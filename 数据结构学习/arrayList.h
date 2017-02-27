@@ -1,4 +1,4 @@
-#pragma once
+Ôªø#pragma once
 #ifndef ARRAYLIST_H_
 #define ARRAYLIST_H_
 #include"linearList.h"
@@ -14,42 +14,58 @@ inline T Min(const T a, const T b)
 	return a < b ? a : b;
 }
 
-/*Ñ1§7Ñ1§7arrayList*/
-//Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7linearListÑ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7
+/*arrayList*/
+//linearList
 template<class T>
 class arrayList :public linearList<T>
 {
 public:
-	//arrayListÑ1§7Ñ1§7Ñ1§7Å0ë1Ñ1§7Ñ1§7É4’4Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7
+	/**arrayList constructor ,copy constructor, destructor**/
+	//constructor
 	arrayList(int initialCapacity = 10);
+	//copy cosntructor
 	arrayList(const arrayList<T>&);
+	//destructor
 	~arrayList() { delete[] element; }
 
-	//ADTÑ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7
+	/**ADT abstract data type**/
+	//if the linear list is empty, return ture,else return false
 	bool empty() const { return listSize == 0; }
+	//if the linear list is full ,return ture,else return false
 	bool full() const { return listSize == arrayLength; }
+	//get the size of the linear list and return it
 	int size() const { return listSize; }
+	//get the value in the index of the array at theIndex
 	T& get(int theIndex) const;
+	//get the index of value "theElement" in the array
 	int indexOf(const T& theElement) const;
+	//erase the value in the array at the theIndex
 	void erase(int theIndex);
+	//insert theElement into the array at the theIndex
 	void insert(int theIndex, const T& theElement);
+	//output the list
 	void output(ostream& out) const;
+	//return the capacity of the array
 	int capacity() const { return arrayLength; }
 
 private:
-	void checkIndex(int theIndex) const;	//Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7theIndexÑ1§7Ñ1§7ßπÑ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0¸7Ñ1§7Ñ1§7É4ß4
-	T* element;				//Ñ1§7õ•Ñ1§7Ñ1§7Ñ1§7Å0È3Ñ1§7Å0Ë6Ñ1§7Å1Ö3Ñ1§7Å0›5Å0À4Ñ1§7Ñ1§7Ñ1§7Ñ1§7
-	int arrayLength;		//Å0›5Å0À4Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7
-	int listSize;				//Ñ1§7Ñ1§7Ñ1§7Å0È3Ñ1§7Ñ1§7Ñ1§7Å0Ë6Ñ1§7Å1Ö3Å0ë0Ñ1§7Ñ1§7Ñ1§7
+	//check if the index is valid, if it`s unvalid ,throw an exception
+	void checkIndex(int theIndex) const;	
+	//list member
+	T* element;
+	//list total capacity
+	int arrayLength;
+	//list length
+	int listSize;			
 };
 
-//Ñ1§7Å0ê3Ñ1§7Å0›5Ñ1§7Ñ1§7Å0›5Å0À4Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0ê5Ñ1§7Ñ1§7Ñ1§7
+//change the array length definition
 template<class Tc>
 void ChangeArrayLength(Tc*& str, int OldLength, int NewLength);
 
-//Ñ1§7Å0ê3Ñ1§7Å0›5Ñ1§7Ñ1§7Å0›5Å0À4Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0ê5Ñ1§7Ñ1§7Ñ1§7
+//
 template<class Tc>
-void ChangeArrayLength(Tc*& str, int OldLength, int NewLength)   //Ñ1§7Å0ª4Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0€8Ñ1§7Å0ê3Ñ1§7Å0ˆ8Ñ1§7É0˚7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0ˆ5Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0€8Ñ1§7Ñ1§7Å0ˆ8Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7
+void ChangeArrayLength(Tc*& str, int OldLength, int NewLength)  
 {
 	if (NewLength < 0)
 		throw ("new length must be >= 0");
@@ -63,7 +79,7 @@ void ChangeArrayLength(Tc*& str, int OldLength, int NewLength)   //Ñ1§7Å0ª4Ñ1§7Ñ
 
 template<class T>
 arrayList<T>::arrayList(int initialCapacity)
-{//Ñ1§7Ñ1§7Ñ1§7É4’4Ñ1§7Ñ1§7
+{//check if the initial capacity is valid
 	if (initialCapacity < 1)
 	{
 		//ostringstream s;
@@ -76,6 +92,7 @@ arrayList<T>::arrayList(int initialCapacity)
 	listSize = 0;
 }
 
+//copy constructor definition
 template<class T>
 arrayList<T>::arrayList(const arrayList<T>& theList)
 {
@@ -87,8 +104,8 @@ arrayList<T>::arrayList(const arrayList<T>& theList)
 
 template<class T>
 void arrayList<T>::checkIndex(int theIndex) const
-{//Å0©2Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7theIndexÑ1§7Ñ1§70Ñ1§7Ñ1§7listSzie-1Å0ı8Ñ1§7Ñ1§7
-	if (theIndex < 0 || theIndex > listSize)
+{//the index should be among 0 ~ listsize-1
+	if (theIndex < 0 || theIndex > listSize-1)
 	{
 		//ostringstream s;
 		cout << "index = " << theIndex << " size = " << listSize;
@@ -97,51 +114,49 @@ void arrayList<T>::checkIndex(int theIndex) const
 	}
 }
 
+
 template<class T>
 T& arrayList<T>::get(int theIndex) const
-{//Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0À2theIndexÑ1§7Ñ1§7Å0Ë6Ñ1§7Ñ1§7
- //Ñ1§7Ñ1§7Å0Ë6Ñ1§7Å1Ö0Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å1ê3Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0¸7Ñ1§7Ñ1§7É4ß4
+{
+	//check if the index is valid
 	checkIndex(theIndex);
+	//index is valid
 	return element[theIndex];
 }
 
 template<class T>
 int arrayList<T>::indexOf(const T& theElement) const
-{//Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0Ë6Ñ1§7Ñ1§7theElementÑ1§7Å0ê7Ñ1§7Å0›5Ñ1§7¶√Ñ1§7Ñ1§7Å0ˆ5Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7
- //Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å1í0Ñ1§7Å0Ë6Ñ1§7Å1É5Ñ1§7Ñ1§7∆5œ3Ñ1§7-1
-
- //Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0Ë6Ñ1§7Ñ1§7theElement
- //find()Ñ1§7Ñ1§7Ñ1§7Å0‹7Å0Ø6Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0›5Ñ1§7Ñ1§7Å0ˆ8Ñ1§7Ñ1§7Å0ˆ8Ñ1§7Ñ1§7Å0Ë6Ñ1§7Å1Ö3Å0ê7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0¥2Ñ1§7Å1ü1Ñ1§7Ñ1§7Ñ1§7endÑ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7
+{
+ //return the index where theElement first occurs
 	int theIndex = (int)(find(element, element + listSize, theElement) - element);
-	//Å0©2Ñ1§7Ñ1§7Å0Ë6Ñ1§7Ñ1§7theElementÑ1§7Å0¢9Ñ1§7Ñ1§7Å0‹9Ñ1§7
+
 	if (theIndex == listSize)
-		//Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0ã4Ñ1§7Å0‹9Ñ1§7
 		return -1;
 	else return theIndex;
 }
 
 template<class T>
 void arrayList<T>::erase(int theIndex)
-{//Å0∞1Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0Ë6Ñ1§7Ñ1§7
- //Ñ1§7Ñ1§7Å0ã4Ñ1§7ß⁄Ñ1§7Å0Ë6Ñ1§7Å1É5Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0¸7Ñ1§7Ñ1§7É4ß4
+{//delete the element whose index is theIndex
 	checkIndex(theIndex);
-	//Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7ßπ
+	//index is valid
 	copy(element + theIndex + 1, element + listSize, element + theIndex);
-	element[--listSize].~T();  //Å0€8Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0›5Ñ1§7Ñ1§7Å0Ë6Ñ1§7Å1É5Ñ1§7Å0Ë6Ñ1§7Å1Ö6Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0›5
+	element[--listSize].~T();  //expilicit call the destructor
 }
 
 template<class T>
 void arrayList<T>::insert(int theIndex, const T& theElement)
-{//Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7theIndexÑ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0Ë6Ñ1§7Ñ1§7theElement
- //Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å1ê3Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0¸7Ñ1§7Ñ1§7É4ß4
+{//insert the theElement into the array at index theIndex
+
 	checkIndex(theIndex);
-	//Ñ1§7Ñ1§7ßπÑ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7ßÿÑ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0¢9Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7
+	//index is valid , check if the array is full,if the array is full , double the capacity of the array
 	if (full())
 	{
 		ChangeArrayLength(element, arrayLength, 2 * arrayLength);
 		arrayLength *= 2;
 	}
-	//copy_backward(b,e,d):Ñ1§7Ñ1§7Ñ1§7Ñ1§7b,eÑ1§7Ñ1§7Ñ1§7Ñ1§7¶∂Ñ1§7Å1í1Ñ1§7Å0Ë6Ñ1§7Å1É5Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0ù1Ñ1§7Ñ1§7Ñ1§7dÅ0À2Ñ1§7Å01Ñ1§7Ñ1§7Ñ1§7¶ÀÑ1§7Ñ1§7
+	//copy_backward(b,e,d):copy the element among e to b from e to d
+	//exp: str[100]="abcd",copy_backwar(str,str+1,str+3) ==> str[100]="abab"           
 	copy_backward(element + theIndex, element + listSize, element + listSize + 1);
 	element[theIndex] = theElement;
 	listSize++;
@@ -149,7 +164,7 @@ void arrayList<T>::insert(int theIndex, const T& theElement)
 
 template<class T>
 void arrayList<T>::output(ostream& out) const
-{//Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Å0È3Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7Ñ1§7
+{
 	copy(element, element + listSize, ostream_iterator<T>(cout, " "));
 }
 #endif // !ARRAYLIST_H
