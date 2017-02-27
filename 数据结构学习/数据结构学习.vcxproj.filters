@@ -39,13 +39,16 @@
     <ClInclude Include="circle_doubly_linked_list.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="array_matrix.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="queue.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="stack.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="array.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
