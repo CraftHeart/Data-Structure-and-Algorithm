@@ -29,4 +29,15 @@ public:
 private:
 	string message;
 };
+
+class ThrowException
+{
+public:
+	ThrowException(string exception) :message{ exception }
+	{
+		cout << "error:" << message << endl;
+	}
+private:
+	string message;
+};
 #endif // !MYEXCEPTIONS_H_

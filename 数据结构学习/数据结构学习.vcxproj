@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="array.h" />
     <ClInclude Include="arrayList.h" />
+    <ClInclude Include="dictionary.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="chain.h" />
     <ClInclude Include="chainNode.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="linearList.h" />
     <ClInclude Include="myExceptions.h" />
     <ClInclude Include="queue.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SinglyLinkedCircularList.h" />
     <ClInclude Include="stack.h" />
   </ItemGroup>

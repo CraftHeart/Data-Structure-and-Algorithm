@@ -5,6 +5,7 @@
 #include"SinglyLinkedCircularList.h"
 #include"doubly_linked_list.h"
 #include"circle_doubly_linked_list.h"
+#include"queue.h"
 
 using namespace std;
 
@@ -84,9 +85,38 @@ void test_circle_doubly_linked_list()
 	cout << "list2[3]= " << list2[3] << endl;
 }
 
+void test_queue()
+{
+	ArrayQueue<int> arrayqueue;
+	for (int i = 0; i < 10; i++)
+	{
+		arrayqueue.push(i);
+	}
+	cout << "arrayqueue size " << arrayqueue.size() << endl;
+	cout << "arrayqueue front = " << arrayqueue.front() << endl;
+	cout << "arrayqueue back = " << arrayqueue.back() << endl;
+	arrayqueue.pop();
+	cout << "after pop arrayqueue front = " << arrayqueue.front() << endl;
+	cout << "after pop arrayqueue size " << arrayqueue.size() << endl;
+
+	ListQueue<int> list_queue;
+	for (int i = 0; i < 10; i++)
+	{
+		list_queue.push(i);
+	}
+	cout << "list queue size = " << list_queue.size() << endl;
+	cout << "list queue front = " << list_queue.front() << endl;
+	cout << "list queue back = " << list_queue.back() << endl;
+	list_queue.pop();
+	cout << "after pop list queue size = " << list_queue.size() << endl;
+	cout << "after pop list queue front = " << list_queue.front() << endl;
+
+}
+
 int main()
 {
 	//test_doubly_linked_list();
-	test_circle_doubly_linked_list();
+	//test_circle_doubly_linked_list();
+	test_queue();
 	return 0;
 }
