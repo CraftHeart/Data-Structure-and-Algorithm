@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="array.h" />
     <ClInclude Include="arrayList.h" />
+    <ClInclude Include="binary_tree.h" />
     <ClInclude Include="dictionary.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="chain.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="SinglyLinkedCircularList.h" />
     <ClInclude Include="stack.h" />
+    <ClInclude Include="tree_node.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mian.cpp" />

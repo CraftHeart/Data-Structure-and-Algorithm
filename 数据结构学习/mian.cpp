@@ -6,6 +6,7 @@
 #include"doubly_linked_list.h"
 #include"circle_doubly_linked_list.h"
 #include"queue.h"
+#include"binary_tree.h"
 
 using namespace std;
 
@@ -113,10 +114,59 @@ void test_queue()
 
 }
 
+void test_binary_tree()
+{
+	LinkedBinaryTree<int> t1, t2, t3, t4, t5;
+	t2.make_tree(1, t1, t1);
+	t3.make_tree(2, t1, t1);
+	t4.make_tree(3, t2, t3);
+	t5.make_tree(4, t4, t3);
+
+	cout << "tree height is " << t5.height() << endl;
+
+	cout << "level order ";
+	t5.level_order();
+	cout << endl;
+
+	cout << "recursion preorder ";
+	t5.recursion_preorder();
+	cout << endl;
+	cout << "nonrecursion preorder ";
+	t5.nonrecursion_preorder();
+	cout << endl;
+
+	cout << "recursion indorder ";
+	t5.recursion_inorder();
+	cout << endl;
+	cout << "nonrecursion inorder ";
+	t5.nonrecursion_inorder();
+	cout << endl;
+
+	cout << "recursion postorder ";
+	t5.recursion_postorder();
+	cout << endl;
+	cout << "nonrecursion postorder ";
+	t5.nonrecursion_postorder();
+	cout << endl;
+
+	LinkedBinaryTree<int> t6(t5);
+	cout << "t6 level order is ";
+	t6.level_order();
+	cout << endl;
+
+
+	if (t6.compare(t5))
+		cout << "is the same" << endl;
+	else
+		cout << "not same" << endl;
+
+}
+
 int main()
 {
 	//test_doubly_linked_list();
 	//test_circle_doubly_linked_list();
-	test_queue();
+	//test_queue();
+	test_binary_tree();
 	return 0;
 }
