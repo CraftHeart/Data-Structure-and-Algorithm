@@ -116,11 +116,13 @@ void test_queue()
 
 void test_binary_tree()
 {
-	LinkedBinaryTree<int> t1, t2, t3, t4, t5;
+	LinkedBinaryTree<int> t1, t2, t3, t4, t5, t7;
 	t2.make_tree(1, t1, t1);
 	t3.make_tree(2, t1, t1);
 	t4.make_tree(3, t2, t3);
 	t5.make_tree(4, t4, t3);
+
+	t7.make_tree(4, t4, t2);
 
 	cout << "tree height is " << t5.height() << endl;
 
@@ -154,8 +156,10 @@ void test_binary_tree()
 	t6.level_order();
 	cout << endl;
 
-
-	if (t6.compare(t5))
+	cout << "t7 level order is ";
+	t7.level_order();
+	cout << endl;
+	if (t6.compare(t7))
 		cout << "is the same" << endl;
 	else
 		cout << "not same" << endl;

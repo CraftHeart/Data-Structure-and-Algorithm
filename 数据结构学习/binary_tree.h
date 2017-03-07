@@ -140,31 +140,18 @@ LinkedBinaryTree<T>::LinkedBinaryTree(const LinkedBinaryTree& tree)
 template<class T>
 bool LinkedBinaryTree<T>::compare(TreeNode<T>* tree_node1, TreeNode<T>* tree_node2)
 {
-	TreeNode<T>* temp1_left = tree_node1;
-	TreeNode<T>* temp2_left = tree_node2;
+	if (tree_node1 == nullptr&&tree_node2 == nullptr)
+		return true;
 
-	TreeNode<T>* temp1_right = tree_node1;
-	TreeNode<T>* temp2_right = tree_node2;
+	if (((tree_node1 != nullptr) && (tree_node2 == nullptr)) || ((tree_node1 == nullptr) && (tree_node1 != nullptr)))
+		return false;
+	if (tree_node1->element_ != tree_node2->element_)
+		return false;
 
-	if (tree_node1 != nullptr&&tree_node2 != nullptr)
-	{
-		if (temp1_left->element_ != temp2_left->element_)
-			return false;
-		if (temp1_left->left_child_ != nullptr&&temp2_left != nullptr)
-		{
-			temp1_left = temp1_left->left_child_;
-			temp2_left = temp2_left->left_child_;
-			compare(temp1_left, temp1_left);
-		}
+	bool left = compare(tree_node1->left_child_, tree_node2->left_child_);
+	bool right = compare(tree_node1->right_child_, tree_node2->right_child_);
 
-		if (temp1_right->right_child_ != nullptr&&temp2_right->right_child_ != nullptr)
-		{
-			temp1_right = temp1_right->right_child_;
-			temp2_right = temp2_right->right_child_;
-			compare(temp1_right, temp2_right);
-		}
-	}
-	return true;
+	return (left&&right);
 }
 
 template<class T>
