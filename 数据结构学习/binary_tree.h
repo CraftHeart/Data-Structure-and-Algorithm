@@ -49,12 +49,8 @@ public:
 	void make_tree(const T &the_element, LinkedBinaryTree<T>& left_tree, LinkedBinaryTree<T>& right_tree);
 
 	bool compare(const LinkedBinaryTree<T>&);//比较两个树，相同则返回ture
-	
-	static bool compare(TreeNode<T>* tree_node1, TreeNode<T>* tree_node2);
 
-	LinkedBinaryTree<T>& swap_tree();//交换每一个节点的左右子树
-
-	static TreeNode<T>* copy(TreeNode<T>*);
+	void swap_tree();//交换每一个节点的左右子树
 
 	void recursion_preorder() const//递归先序遍历
 	{
@@ -107,6 +103,12 @@ public:
 
 	static int tree_height(TreeNode<T>* tree) ; //返回树的高度
 
+	static void swap_tree(TreeNode<T>* tree);//交换节点的左右子树
+
+	static bool compare(TreeNode<T>* tree_node1, TreeNode<T>* tree_node2);//比较两个节点是否相同
+
+	static TreeNode<T>* copy(TreeNode<T>*);//复制一个节点
+
 private:
 	static void visit(TreeNode<T>* tree_node);//访问某个节点元素
 	TreeNode<T>* root_;//根节点
@@ -128,6 +130,20 @@ TreeNode<T>* LinkedBinaryTree<T>::copy(TreeNode<T>* tree_node)
 	temp->left_child_ = copy(tree_node->left_child_);
 	temp->right_child_ = copy(tree_node->right_child_);
 	return temp;
+}
+
+template<class T>
+void LinkedBinaryTree<T>::swap_tree(TreeNode<T>* tree)
+{
+	if (tree != nullptr)
+	{
+		TreeNode<T>* temp_node = tree->left_child_;
+		tree->left_child_ = tree->right_child_;
+		tree->right_child_ = temp_node;
+
+		swap_tree(tree->left_child_);
+		swap_tree(tree->right_child_);
+	}
 }
 
 template<class T>
@@ -161,9 +177,9 @@ bool LinkedBinaryTree<T>::compare(const LinkedBinaryTree<T>& tree)
 }
 
 template<class T>
-LinkedBinaryTree<T>& LinkedBinaryTree<T>::swap_tree()
+void LinkedBinaryTree<T>::swap_tree()
 {//交换每一个节点的左右子树
-
+	swap_tree(root_);
 }
 
 template<class T>

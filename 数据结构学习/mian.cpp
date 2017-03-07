@@ -151,6 +151,49 @@ void test_binary_tree()
 	t5.nonrecursion_postorder();
 	cout << endl;
 
+	t5.swap_tree();//交换t5的所有左右子树
+
+	cout << "after swaptree t5 level order is ";
+	t5.level_order();
+	cout << endl;
+	cout << "after swaptree t5 preoder is ";
+	t5.recursion_preorder();
+	cout << endl;
+	cout << "after swaptree t5 inorder is ";
+	t5.recursion_inorder();
+	cout << endl;
+	cout << "after swaptree t5 postorder is ";
+	t5.recursion_postorder();
+	cout << endl;
+
+	t5.swap_tree();//交换t5的所有左右子树
+
+	cout << "level order ";
+	t5.level_order();
+	cout << endl;
+
+	cout << "recursion preorder ";
+	t5.recursion_preorder();
+	cout << endl;
+	cout << "nonrecursion preorder ";
+	t5.nonrecursion_preorder();
+	cout << endl;
+
+	cout << "recursion indorder ";
+	t5.recursion_inorder();
+	cout << endl;
+	cout << "nonrecursion inorder ";
+	t5.nonrecursion_inorder();
+	cout << endl;
+
+	cout << "recursion postorder ";
+	t5.recursion_postorder();
+	cout << endl;
+	cout << "nonrecursion postorder ";
+	t5.nonrecursion_postorder();
+	cout << endl;
+
+
 	LinkedBinaryTree<int> t6(t5);
 	cout << "t6 level order is ";
 	t6.level_order();
@@ -159,7 +202,8 @@ void test_binary_tree()
 	cout << "t7 level order is ";
 	t7.level_order();
 	cout << endl;
-	if (t6.compare(t7))
+
+	if (t6.compare(t5))
 		cout << "is the same" << endl;
 	else
 		cout << "not same" << endl;
