@@ -63,6 +63,12 @@
     <ClInclude Include="tree_node.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="max_priority_queue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="max_heap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mian.cpp">
