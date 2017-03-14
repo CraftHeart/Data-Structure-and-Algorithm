@@ -2,6 +2,7 @@
 #ifndef ARRAYLIST_H_
 #define ARRAYLIST_H_
 #include"linearList.h"
+#include"change_array_length.h"
 #include<iostream>
 #include<ostream>
 #include<algorithm>   //find()
@@ -58,24 +59,6 @@ private:
 	//list length
 	int listSize;			
 };
-
-//change the array length definition
-template<class Tc>
-void ChangeArrayLength(Tc*& str, int OldLength, int NewLength);
-
-//
-template<class Tc>
-void ChangeArrayLength(Tc*& str, int OldLength, int NewLength)  
-{
-	if (NewLength < 0)
-		throw ("new length must be >= 0");
-	int strSize = Min(OldLength, NewLength);
-	Tc* temp = new Tc[strSize];
-
-	copy(str, str + strSize, temp);
-	delete[] str;
-	str = temp;
-}
 
 template<class T>
 arrayList<T>::arrayList(int initialCapacity)

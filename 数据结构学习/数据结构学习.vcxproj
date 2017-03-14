@@ -149,6 +149,7 @@
     <ClInclude Include="array.h" />
     <ClInclude Include="arrayList.h" />
     <ClInclude Include="binary_tree.h" />
+    <ClInclude Include="change_array_length.h" />
     <ClInclude Include="dictionary.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="chain.h" />

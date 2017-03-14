@@ -1,25 +1,25 @@
 ﻿  mian.cpp
 c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(2372): warning C4996: 'std::copy::_Unchecked_iterators::_Deprecate': Call to 'std::copy' with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
   c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(2372): note: 参见“std::copy::_Unchecked_iterators::_Deprecate”的声明
-  e:\github\data-structure-and-algorithm\数据结构学习\arraylist.h(143): note: 参见对正在编译的函数 模板 实例化“_OutIt std::copy<T*,T*>(_InIt,_InIt,_OutIt)”的引用
+  e:\github\data-structure-and-algorithm\数据结构学习\arraylist.h(126): note: 参见对正在编译的函数 模板 实例化“_OutIt std::copy<T*,T*>(_InIt,_InIt,_OutIt)”的引用
           with
           [
               _OutIt=int *,
               T=int,
               _InIt=int *
           ]
-  e:\github\data-structure-and-algorithm\数据结构学习\arraylist.h(140): note: 编译类 模板 成员函数“void arrayList<int>::erase(int)”时
+  e:\github\data-structure-and-algorithm\数据结构学习\arraylist.h(123): note: 编译类 模板 成员函数“void arrayList<int>::erase(int)”时
   e:\github\data-structure-and-algorithm\数据结构学习\mian.cpp(15): note: 参见对正在编译的类 模板 实例化“arrayList<int>”的引用
 c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(2568): warning C4996: 'std::copy_backward::_Unchecked_iterators::_Deprecate': Call to 'std::copy_backward' with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
   c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(2568): note: 参见“std::copy_backward::_Unchecked_iterators::_Deprecate”的声明
-  e:\github\data-structure-and-algorithm\数据结构学习\arraylist.h(160): note: 参见对正在编译的函数 模板 实例化“_BidIt2 std::copy_backward<T*,T*>(_BidIt1,_BidIt1,_BidIt2)”的引用
+  e:\github\data-structure-and-algorithm\数据结构学习\arraylist.h(143): note: 参见对正在编译的函数 模板 实例化“_BidIt2 std::copy_backward<T*,T*>(_BidIt1,_BidIt1,_BidIt2)”的引用
           with
           [
               _BidIt2=int *,
               T=int,
               _BidIt1=int *
           ]
-  e:\github\data-structure-and-algorithm\数据结构学习\arraylist.h(149): note: 编译类 模板 成员函数“void arrayList<int>::insert(int,const T &)”时
+  e:\github\data-structure-and-algorithm\数据结构学习\arraylist.h(132): note: 编译类 模板 成员函数“void arrayList<int>::insert(int,const T &)”时
           with
           [
               T=int
