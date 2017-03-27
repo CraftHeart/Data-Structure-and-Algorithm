@@ -72,6 +72,12 @@
     <ClInclude Include="change_array_length.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="pair_node.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="sorted_chain.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mian.cpp">

@@ -160,9 +160,11 @@
     <ClInclude Include="max_heap.h" />
     <ClInclude Include="max_priority_queue.h" />
     <ClInclude Include="myExceptions.h" />
+    <ClInclude Include="pair_node.h" />
     <ClInclude Include="queue.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SinglyLinkedCircularList.h" />
+    <ClInclude Include="sorted_chain.h" />
     <ClInclude Include="stack.h" />
     <ClInclude Include="tree_node.h" />
   </ItemGroup>

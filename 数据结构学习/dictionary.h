@@ -4,7 +4,7 @@
 
 template<class K, class E>
 class Dictionary
-{
+{//
 public:
 	virtual ~Dictionary() {}
 	//返回ture ，当且仅当字典为空

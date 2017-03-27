@@ -29,5 +29,6 @@ c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(2568): w
           [
               T=int
           ]
+mian.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/OPT:LBR”规范)
   数据结构学习.vcxproj -> E:\GitHub\Data-Structure-and-Algorithm\Debug\数据结构学习.exe
   数据结构学习.vcxproj -> E:\GitHub\Data-Structure-and-Algorithm\Debug\数据结构学习.pdb (Full PDB)
