@@ -384,5 +384,32 @@ void LinkedBinaryTree<T>::dispose(TreeNode<T>* tree_node)
 
 }
 
+void find_postorder(const char* preorder, const char* inorder,int len)
+{
+	if (len == 0)
+		return;
+	char root = preorder[0];
+	int inorder_root_index = -1;
+	while (root != inorder[++inorder_root_index]);
+
+	find_postorder(preorder + 1, inorder, inorder_root_index);
+	find_postorder(preorder + inorder_root_index + 1, inorder + inorder_root_index + 1, len - inorder_root_index - 1);
+	cout << root ;
+}
+
+void find_preorder(const char* postorder, const char* inorder, int len)
+{
+	if (len == 0)
+		return;
+	char root = postorder[len - 1];
+	int inorder_root_index = -1;
+	while (root != inorder[++inorder_root_index]);
+
+	cout << root;
+	find_preorder(postorder, inorder, inorder_root_index);
+	find_preorder(postorder+inorder_root_index, inorder + inorder_root_index + 1, len - inorder_root_index - 1);
+}
+
+
 #endif // !BINARY_TREE_H_
 

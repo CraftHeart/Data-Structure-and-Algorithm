@@ -208,7 +208,22 @@ void test_binary_tree()
 	else
 		cout << "not same" << endl;
 
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+}                               
+
+void test_find_postorder()
+{
+	string preorder = "ABDECFG";
+	string inorder = "DBEAFCG";
+	string postorder = "DEBFGCA";
+	cout << "preorder = " << preorder << endl;
+	cout << " inorder = " << inorder << endl;
+	cout << "postorder = " << postorder << endl;
+
+	find_postorder(preorder.c_str(), inorder.c_str(),preorder.size());
+	cout << endl;
+	find_preorder(postorder.c_str(), inorder.c_str(), inorder.size());
+	cout << endl;
+}
 
 int main()
 {
@@ -216,5 +231,6 @@ int main()
 	//test_circle_doubly_linked_list();
 	//test_queue();
 	//test_binary_tree();
+	test_find_postorder();
 	return 0;
 }
